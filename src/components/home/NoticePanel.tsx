@@ -1,5 +1,6 @@
 import { useCampus } from '@/hooks/useCampus';
 import { Bell, ArrowRight, Calendar, Tag } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const mockNotices = [
@@ -111,6 +112,7 @@ function AcademicNoticeCard({ notice, index }: { notice: typeof mockNotices[0]; 
 
 export function NoticePanel() {
   const { noticesConfig, theme } = useCampus();
+  const navigate = useNavigate();
 
   const renderNoticeList = () => {
     switch (noticesConfig.cardStyle) {
@@ -158,6 +160,7 @@ export function NoticePanel() {
           <h3 className="font-semibold text-slate-800">通知公告</h3>
         </div>
         <button
+          onClick={() => navigate('/notices')}
           className="flex items-center gap-1 text-sm font-medium transition-colors hover:underline"
           style={{ color: theme.primaryColor }}
         >
